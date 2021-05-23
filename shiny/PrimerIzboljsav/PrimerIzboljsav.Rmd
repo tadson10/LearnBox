@@ -1,0 +1,62 @@
+---
+title: "Primer izboljšav"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+## Tema 1  
+ 
+### Naloga brez uporabe Jobe strežnika
+
+*Pred vami je preprosta naloga s praznim urejevalnikom kode, kamor vnesete rešitev.*
+
+Napišite JavaScript funkcijo za izračun n-tega Fibonaccijevega števila:
+
+```{js simpleJS, exercise=TRUE,  exercise.timelimit = 2, exercise.cap = "app.js", exercise.id="firstJSExercise", exercise.type = "js", exercise.libraryPath = "/home/libraries"} 
+   
+```       
+ 
+## Tema 2
+
+### Naloga z uporabo Jobe strežnika
+
+*Pred vami je preprosta naloga z nekaj vnaprej pripravljene kode. Za določitev številke vrat, na katerih boste pognali preprost spletni strežnik, uporabite "process.env.PORT". Statične datoteke se na Jobe strežniku nahajajo v poddirektoriju "public".*
+
+Napišite kodo za zagon preprostega Express spletnega strežnika, ki bo postregel 2 strani skupaj s stilsko datoteko in dodatno JavaScript datoteko:
+
+```{js express1,exercise=TRUE, exercise.id = "expressExercise", exercise.timelimit = 10, exercise.type = "js", exercise.lines = 20, exercise.cap = "app.js", exercise.serverIP = "#JOBE_SERVER_IP#"}  
+const express = require('express'); 
+const app = express(); 
+const bodyParser = require('body-parser'); 
+var path = require('path');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+app.listen(process.env.PORT, () => console.log(`This app is listening on port `  + process.env.PORT));
+```  
+ 
+```{js express2,exercise=TRUE, exercise.id = "expressExercise", exercise.type = "js", exercise.lines = 20, exercise.cap = "index.html", exercise.serverIP = "#JOBE_SERVER_IP#"}
+<!DOCTYPE html> 
+<html>
+    <h1>Hello World!</h1>
+</html>
+```
+
+```{js express3, exercise=TRUE, exercise.id = "expressExercise", exercise.type = "js", exercise.lines = 20, exercise.cap = "styles.css", exercise.serverIP = "#JOBE_SERVER_IP#"} 
+ 
+```
+
+```{js express4, exercise=TRUE, exercise.id = "expressExercise", exercise.type = "js", exercise.timelimit = 10, exercise.lines = 20, exercise.cap = "script.js", exercise.serverIP = "#JOBE_SERVER_IP#"} 
+function preprostaFunkcija() {
+	console.log("Klic preprostaFunkcija()");
+}       
+``` 

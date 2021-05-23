@@ -1,0 +1,51 @@
+version: '3.3'
+
+services:
+    jobe:
+        build:
+            context: jobe
+            args:
+                - ROOTPASS=$ROOTPASS
+                - TZ=$TZ
+        env_file: .env
+        environment: 
+            - MYSQLUSER=$MYSQLUSER
+            - MYSQLPASS=$MYSQLPASS
+        container_name: jobe
+        restart: unless-stopped
+        networks:
+            - inside
+        volumes:
+            - mysqlVolume:/var/lib/mysql
+    shiny:
+        build:
+            context: shiny
+            args:
+                - JOBEIP=$JOBEIP
+        env_file: .env
+        container_name: shiny
+        restart: unless-stopped
+        networks:
+            - inside
+    nginx:
+        build:
+            context: nginx
+        container_name: nginx
+        restart: unless-stopped
+        ports:
+            - 3000-3100:3000-3100
+            - 3838:3838
+            - 4000:4000
+        networks:
+            - inside
+            - outside
+        depends_on: 
+                - jobe
+                - shiny
+volumes:
+  mysqlVolume: {}
+
+networks: 
+    inside: 
+        internal: true
+    outside: {}

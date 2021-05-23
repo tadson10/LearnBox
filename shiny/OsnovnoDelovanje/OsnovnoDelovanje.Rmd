@@ -1,0 +1,101 @@
+---
+title: "Learnr osnovno delovanje"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+ 
+
+## Tema 1
+
+### Kviz z 2 vprašanjema
+```{r simpleQuiz}
+x <- 10
+quiz(
+  caption="Kviz",
+  question("Kaj izmed nastetega ni povezano s programskim jezikom JavaScript?",
+    answer("Learnr", correct = TRUE),
+    answer("Express", message = "Express je JavaScript knjižnica."),
+    answer("Shiny", correct = TRUE),
+    answer("Angular"),
+    allow_retry = TRUE,
+    incorrect = "Odgovor ni pravilen.",
+    correct = "Odgovor je pravilen."
+  ),
+  question(sprintf("Če je $x = %s$, katera trditev drzi?", x),
+    answer(sprintf("$\\sqrt{x ^ 2} = 10$"), correct = TRUE, message = "Pravilen odgovor."),
+    answer(sprintf("$x ^ 2 = %d$", x * 2)),
+    answer("$\\sin x = 1$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    type = "single"
+  )
+)
+```
+
+### Videoposnetek
+
+![](https://youtu.be/uVwtVBpw7RQ){width="560" height="315"}
+
+### Vključitev slike v interaktivno lekcijo
+
+```{r, out.width = "60%", out.height = "60%", fig.cap = "Opis slike."}
+knitr::include_graphics("images/image.jpg")
+```
+
+## Tema 2
+
+### R naloga z namigom
+
+*Naloga vsebuje namig, ki uporabniku pomaga pri resevanju.*
+
+Izvorno kodo spremeni, tako da vrne prvih 5 vrstic zbirke podatkov *mtcars*:
+
+```{r cars, exercise=TRUE, exercise.eval=TRUE, exercise.cap="Code", exercise.lines=3, exercise.timelimit=2}
+mtcars
+```
+
+```{r cars-hint}
+head(mtcars)
+```
+
+### Uporaba *context = "data"* in interaktivnih Shiny komponent
+```{r, context="data"}
+carsData <- head(mtcars)
+irisData <- head(iris)
+arrestsData <- head(USArrests)
+```
+
+```{r}
+  selectInput("vhod", "Podatkovna zbirka:",
+                c("mtcars" = "mtcars",
+                  "iris" = "iris",
+                  "USArrests" = "USArrests"))
+
+  tableOutput("izhod")
+```
+
+```{r, context="server"}
+  output$izhod <- renderTable({
+    carsData
+  })
+
+  dataset <- reactive({
+    switch(input$vhod,
+           "mtcars" = carsData,
+           "iris" = irisData,
+           "USArrests" = arrestsData)
+  })
+
+  output$izhod <- renderTable({
+    dataset()
+  })
+```
+

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Napišite JavaScript funkcijo za izračun n-tega Fibonaccijevega števila:
 
 ```{js simpleJS, exercise=TRUE,  exercise.timelimit = 2, exercise.cap = "app.js", exercise.id="firstJSExercise", exercise.type = "js", exercise.libraryPath = "/home/libraries"} 
-   
+   function fib(int n) {}
 ```       
  
 ## Tema 2

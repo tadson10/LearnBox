@@ -63,6 +63,7 @@ RUN ln -snf /usr/share/zoneinfo/"$TZ" /etc/localtime && \
   php-xml \
   systemd \
   npm \
+  lsof \
   unzip && \
   npm install -g express && \
   npm install -g body-parser && \

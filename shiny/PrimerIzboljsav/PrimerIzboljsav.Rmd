@@ -28,7 +28,7 @@ Napišite JavaScript funkcijo za izračun n-tega Fibonaccijevega števila:
 
 Napišite kodo za zagon preprostega Express spletnega strežnika, ki bo postregel 2 strani skupaj s stilsko datoteko in dodatno JavaScript datoteko:
 
-```{js express1,exercise=TRUE, exercise.id = "expressExercise", exercise.timelimit = 10, exercise.type = "js", exercise.lines = 20, exercise.cap = "app.js", exercise.serverIP = "#JOBE_SERVER_IP#"}  
+```{js express1,exercise=TRUE, exercise.id = "expressExercise", exercise.timelimit = 300, exercise.type = "js", exercise.lines = 20, exercise.cap = "app.js", exercise.serverIP = "#JOBE_SERVER_IP#"}  
 const express = require('express'); 
 const app = express(); 
 const bodyParser = require('body-parser'); 

@@ -58,7 +58,7 @@ knitr::include_graphics("images/image.jpg")
 
 Izvorno kodo spremeni, tako da vrne prvih 5 vrstic zbirke podatkov *mtcars*:
 
-```{r cars, exercise=TRUE, exercise.eval=TRUE, exercise.cap="Code", exercise.lines=3, exercise.timelimit=2}
+```{r cars, exercise=TRUE, exercise.eval=TRUE, exercise.cap="Code", exercise.lines=10, exercise.timelimit=2}
 mtcars
 ```
 

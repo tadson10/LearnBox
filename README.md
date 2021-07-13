@@ -1,6 +1,8 @@
 # LearnBox
 Repozitorij vsebuje datoteke za postavitev vsebnikov Docker za testiranje delovanja nadgrajene različice R paketa [**learnr**](https://github.com/tadson10/learnr) in strežnika [**Jobe**](https://github.com/tadson10/jobe). Paket **learnr** omogoča enostavno izdelavo interaktivnih lekcij za učenje R in Node.js (JavaScript), **Jobe** pa poskrbi za izvajanje kode JavaScript v peskovniku.
 
+Vključeni videoposnetek v interaktivni lekciji z naslovom **Learnr osnovno delovanje** je pridobljen s platforme Youtube zgolj za prikaz delovanja funkcionalnosti in ni del diplomske naloge (vir videoposnetka: https://youtu.be/uVwtVBpw7RQ).
+
 1. Prenesemo vsebino repozitorij na disk
 2. V konzoli oz. terminalu se pomaknemo v korensko mapo prenešenega repozitorija.
 ```
